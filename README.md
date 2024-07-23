@@ -10,6 +10,8 @@
 Seven-Lines Portfolio Website
 </h1> 
 
+I built this using [a template from MagicUI](https://magicui.design/docs/templates/portfolio) + my own additions. 
+
 > [!NOTE]  
-> I built this using [a template from MagicUI](https://magicui.design/docs/templates/portfolio) + my own additions. 
+> I have yet to deploy this to the web. Should do that soon tho. 
 
