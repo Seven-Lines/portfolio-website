@@ -62,12 +62,14 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="px-20 py-12 sm:py-24" style={{ backgroundColor: "rgb(var(--background-light))" }}>
-            <TooltipProvider delayDuration={0}>
-              {children}
+          <TooltipProvider delayDuration={0}>
+            <div className="flex min-h-screen">
               <Navbar />
-            </TooltipProvider>
-          </div>
+              <div className="flex-grow px-20 py-12 sm:py-24" style={{ backgroundColor: "rgb(var(--background-light))" }}>
+                {children}
+              </div>
+            </div>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
