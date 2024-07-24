@@ -18,7 +18,7 @@ export default function Page() {
         <div className="mx-auto w-full max-w-4xl space-y-8">
           <div className="gap-2 flex flex-col gap-8 justify-center items-center lg:flex-row justify-between">
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-64 -ml-14 border transition-all duration-300">
+              <Avatar className="size-64 border transition-all duration-300">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
@@ -28,10 +28,10 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="font-bold tracking-tighter sm:text-5xl text-6xl/none"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]}.`}
+                text={`Hi, I'm ${DATA.name.split(" ")[0]} ✌️`}
               />
               <BlurFadeText
-                className="lg:max-w-[600px] lg:ml-6 md:text-xl"
+                className="lg:max-w-[600px] lg:ml-3 md:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -41,13 +41,21 @@ export default function Page() {
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">About</h2>
+          <h2 className="text-xl font-bold">About / Skills</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
           </Markdown>
         </BlurFade>
+        <div className="pt-5 flex flex-wrap gap-1">
+          {DATA.skills.map((skill, id) => (
+            <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
+              <Badge key={skill}>{skill}</Badge>
+            </BlurFade>
+          ))}
+        </div>
+        
       </section>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
@@ -97,35 +105,17 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
-          </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
       <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  My Projects
-                </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Check out my latest work
+                  My latest work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are a few of my
-                  favorites.
+                  websites to complex programs. Here are some of my favorites. 
                 </p>
               </div>
             </div>
