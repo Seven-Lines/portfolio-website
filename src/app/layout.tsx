@@ -7,7 +7,6 @@ import type { Metadata } from "next";
 import Particles from "@/components/ui/particles";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import FlickeringGrid from "@/components/ui/flickering-grid";
 
 const fontSans = FontSans({
   subsets: ["latin"],
