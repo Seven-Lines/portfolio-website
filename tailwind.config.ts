@@ -61,6 +61,10 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xxl: "32px"
+      },
+      rotate:{
+        '15': '15deg'
       },
       keyframes: {
         "accordion-down": {

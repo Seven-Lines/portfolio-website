@@ -5,6 +5,7 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { FadeText } from "@/components/ui/fade-text";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -16,47 +17,45 @@ export default function Page() {
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
         <div className="mx-auto w-full max-w-4xl space-y-8">
-          <div className="gap-2 flex flex-col gap-8 justify-center items-center lg:flex-row justify-between">
+          <div className="gap-2 flex flex-col gap-8 justify-center lg:flex-row justify-between">
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-64 border transition-all duration-300">
+              <Avatar className="size-32 transition-all duration-300 outline outline-offset-4 outline-2 top-0" circle={false}>
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
+              <BlurFadeText
+                delay={BLUR_FADE_DELAY}
+                className="absolute text-6xl top-20 right-0 -mr-3"
+                text="✌️"
+              />
             </BlurFade>
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
                 className="font-bold tracking-tighter sm:text-5xl text-6xl/none"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} ✌️`}
+                text={`Hi, I'm ${DATA.name.split(" ")[0]}.`}
               />
-              <BlurFadeText
-                className="lg:max-w-[600px] lg:ml-3 md:text-xl"
-                delay={BLUR_FADE_DELAY}
-                text={DATA.description}
-              />
+              <BlurFade 
+                delay={BLUR_FADE_DELAY * 4}
+                className="lg:max-w-[600px] md:text-xl"
+              >
+                <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+                  {DATA.summary}
+                </Markdown>
+              </BlurFade>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="about">
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">About / Skills</h2>
-        </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {DATA.summary}
-          </Markdown>
-        </BlurFade>
-        <div className="pt-5 flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-1">
           {DATA.skills.map((skill, id) => (
             <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
               <Badge key={skill}>{skill}</Badge>
             </BlurFade>
           ))}
         </div>
-        
+        </div>
       </section>
+      
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>

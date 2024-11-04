@@ -4,8 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import Particles from "@/components/ui/particles";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import FlickeringGrid from "@/components/ui/flickering-grid";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -60,12 +62,22 @@ export default function RootLayout({
           "min-h-screen font-sans antialiased max-w-4xl mx-auto",
           fontSans.variable
         )}
+        style={{
+          backgroundImage: "linear-gradient(to bottom, rgb(var(--background-light)) 0%, rgb(var(--background-dark)) 30%)",
+        }}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider delayDuration={0}>
             <div className="flex min-h-screen">
               <Navbar />
-              <div className="flex-grow px-20 py-12 sm:py-24" style={{ backgroundColor: "rgb(var(--background-light))" }}>
+              <Particles
+                className="absolute inset-0"
+                quantity={100}
+                ease={80}
+                color={"#ffffff"}
+                refresh
+              />
+              <div className="flex-grow px-20 py-12 sm:py-24">
                 {children}
               </div>
             </div>

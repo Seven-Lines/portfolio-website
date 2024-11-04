@@ -9,7 +9,7 @@
   }
 
   .dark {
-    --background-light: 30, 30, 30; /* Equivalent to bg-gray-800 */
+    --background-light: 10, 30, 30; /* Equivalent to bg-gray-800 */
     --background-dark: 22, 21, 19; /* Equivalent to bg-gray-200 */
   }
 

@@ -7,17 +7,20 @@ import { cn } from "@/lib/utils"
 
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
->(({ className, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> & { circle?: boolean } // Add 'circle' prop
+>(({ className, circle = true, ...props }, ref) => ( // Set 'circle' to true by default
   <AvatarPrimitive.Root
     ref={ref}
     className={cn(
-      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
+      "relative flex h-10 w-10 shrink-0 overflow-hidden",
+      circle ? "rounded-full" : "rounded-tr-xxl rounded-bl-xxl", // Conditional rounding based on 'circle'
       className
     )}
     {...props}
   />
-))
+));
+Avatar.displayName = AvatarPrimitive.Root.displayName;
+
 Avatar.displayName = AvatarPrimitive.Root.displayName
 
 const AvatarImage = React.forwardRef<
@@ -39,7 +42,7 @@ const AvatarFallback = React.forwardRef<
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      "flex h-full w-full items-center justify-center bg-muted",
       className
     )}
     {...props}
